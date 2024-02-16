@@ -3,6 +3,7 @@ package pro.evanwright.saphira.query;
 import pro.evanwright.saphira.exception.UncheckedSQLException;
 
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -255,6 +256,28 @@ public class QueryResults {
     public long getLong(String columnLabel) throws UncheckedSQLException {
         try {
             return this.resultSet.getLong(columnLabel);
+        } catch (SQLException exception) {
+            throw new UncheckedSQLException(exception);
+        }
+    }
+
+    /**
+     * @see ResultSet#getBlob(String)
+     */
+    public Blob getBlob(String columnLabel) throws UncheckedSQLException {
+        try {
+            return this.resultSet.getBlob(columnLabel);
+        } catch (SQLException exception) {
+            throw new UncheckedSQLException(exception);
+        }
+    }
+
+    /**
+     * @see ResultSet#getBlob(int)
+     */
+    public Blob getBlob(int columnIndex) throws UncheckedSQLException {
+        try {
+            return this.resultSet.getBlob(columnIndex);
         } catch (SQLException exception) {
             throw new UncheckedSQLException(exception);
         }
