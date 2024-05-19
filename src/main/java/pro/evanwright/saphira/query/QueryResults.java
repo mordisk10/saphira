@@ -151,6 +151,28 @@ public class QueryResults {
         }
     }
 
+     /**
+     * @see ResultSet#getBytes(int)
+     */
+    public byte[] getBytes(int columnIndex) throws UncheckedSQLException {
+        try {
+            return this.resultSet.getBytes(columnIndex);
+        } catch (SQLException exception) {
+            throw new UncheckedSQLException(exception);
+        }
+    }
+
+    /**
+     * @see ResultSet#getBytes(String)
+     */
+    public byte[] getBytes(String columnLabel) throws UncheckedSQLException {
+        try {
+            return this.resultSet.getBytes(columnLabel);
+        } catch (SQLException exception) {
+            throw new UncheckedSQLException(exception);
+        }
+    }
+
     /**
      * @see ResultSet#getDate(int)
      */
